@@ -1,10 +1,7 @@
 package com.wladyslaw.myspringmvc.controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -20,10 +17,24 @@ public class Controller {
         return "hello";
     }
 
+    @GetMapping("/path/{id}")
+    public String helloWithPath(@PathVariable String id){
+        System.out.println(id);
+        return "hello";
+    }
+
     @PostMapping("/addName")
     public String addName(@RequestBody String userName) {
         System.out.println(userName);
         return "hello";
     }
+
+    @PostMapping("/json")
+    @ResponseBody
+    public String sendJson(@RequestBody String name){
+        System.out.println(name);
+        return "hello";
+    }
+
 
 }
